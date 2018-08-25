@@ -1,5 +1,5 @@
-## Repo for CryptoWars Project
+## Repo Starter with Sass Modules - React App Rewired
+# https://github.com/timarney/react-app-rewired
 
 1. Contains React with Redux as store management.
-2. Truffle Framework as Smart Contract tool.
-3. Styling made with styled-components library
+2. Styling made sass modules

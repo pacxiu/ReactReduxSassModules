@@ -1,57 +1,24 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { BrowserRouter as Router, Route, Switch, withRouter } from "react-router-dom";
-import { injectGlobal } from 'styled-components';
-
-// loading SmartContract Details
-import heroes from '../data/heroes';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 // libraries for SmartContract
 import Web3 from 'web3';
 
-// import components and containers
-import Footer from '../components/Footer/';
-import Home from '../components/Home/';
+import "./index.css";
 
-import Marketplace from './Marketplace/';
+// import components and containers
 import Menu from './Menu/';
 
-import { sizeVars, media } from '../style-utils/vars';
+import Home from '../pages/Home/';
+import Marketplace from '../pages/Marketplace/';
+
+import Footer from '../components/Footer/';
 
 // import actions
 import { setWeb3, setAccount, setContract } from '../actions/web3';
 import { setNetwork } from '../actions/network';
-
-// inject global
-injectGlobal`
-  	body {
-	    margin: 0;
-	    padding-top: ${sizeVars.navHeight};
-	    font-size: 2rem;
-	    font-family: "Lato";
-  	}
-
-  	html {
-  		font-size: 10px
-
-		// 27 inch
-		@media screen and (min-width: 2559px) { font-size: 14px; }
-		// 4kHD
-		@media screen and (min-width: 3839px) { font-size: 21px; }
-
-		@media screen and (max-width: 1600px) { font-size: 9px; }
-		
-		${media.smallDesktop`font-size: 8.5px`}
-
-		${media.mobile`font-size: 8px`}		
-  	}
-
-  	a {
-  		cursor: pointer;
-  		text-decoration: none;
-  	}
-`;
 
 class App extends Component {
 	constructor() {
@@ -132,21 +99,21 @@ class App extends Component {
 		}, 5000);
 	}
 
-  	render() {
-	    return (
-	    	<Router>
-	    		<div className="app">
-					<Menu />
+	render() {
+    return (
+    	<Router>
+    		<div className="app">
+				<Menu />
 
-					<Switch>
-						<Route exact path="/" render={(props) => ( <Home {...props} />)}/>
-						<Route exact path="/test" render={(props) => ( <Marketplace {...props} />)}/>
-					</Switch>
+				<Switch>
+					<Route exact path="/" render={(props) => ( <Home {...props} />)}/>
+					<Route exact path="/test" render={(props) => ( <Marketplace {...props} />)}/>
+				</Switch>
 
-					<Footer />
-				</div>
-	    	</Router>		
-	    );
+				<Footer />
+			</div>
+    	</Router>		
+    );
   }
 }
 

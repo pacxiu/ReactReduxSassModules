@@ -23,7 +23,10 @@
     "eject": "react-app-rewired eject"
   },
   "devDependencies": {
+    "node-sass": "^4.9.3",
+    "react-app-rewire-css-modules": "github:codebandits/react-app-rewire-css-modules",
     "react-app-rewired": "^1.5.2",
+    "sass-loader": "^7.1.0",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2"
   }

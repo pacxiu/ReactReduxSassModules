@@ -7,16 +7,16 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Web3 from 'web3';
 
 // import components and containers
-import Menu from './Menu/';
+import Menu from './containers/Menu';
 
-import Home from '../pages/Home/';
-import Marketplace from '../pages/Marketplace/';
+import Home from './pages/Home';
+import Marketplace from './pages/Marketplace';
 
-import Footer from '../components/Footer/';
+import Footer from './components/Footer';
 
 // import actions
-import { setWeb3, setAccount, setContract } from '../actions/web3';
-import { setNetwork } from '../actions/network';
+import { setWeb3, setAccount, setContract } from './actions/web3';
+import { setNetwork } from './actions/network';
 
 class App extends Component {
 	constructor() {
@@ -101,15 +101,15 @@ class App extends Component {
     return (
     	<Router>
     		<div id="app">
-				<Menu />
+  				<Menu />
 
-				<Switch>
-					<Route exact path="/" render={(props) => ( <Home {...props} />)}/>
-					<Route exact path="/test" render={(props) => ( <Marketplace {...props} />)}/>
-				</Switch>
+  				<Switch>
+  					<Route exact path="/" render={(props) => ( <Home {...props} />)}/>
+  					<Route exact path="/test" render={(props) => ( <Marketplace {...props} />)}/>
+  				</Switch>
 
-				<Footer />
-			</div>
+  				<Footer />
+  			</div>
     	</Router>		
     );
   }

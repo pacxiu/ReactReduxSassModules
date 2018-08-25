@@ -6,12 +6,14 @@ import "./assets/styles/normalize.css"
 import "./assets/styles/common.css"
 
 import registerServiceWorker from './registerServiceWorker';
-import App from './containers/App';
+import App from './App';
 import store from './store';
 
 ReactDOM.render(
 	<Provider store={store}>
 		<App />
 	</Provider>
-	, document.getElementById('root'));
+	, document.getElementById('root')
+);
+
 registerServiceWorker();

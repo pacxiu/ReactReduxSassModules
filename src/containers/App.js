@@ -6,8 +6,6 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 // libraries for SmartContract
 import Web3 from 'web3';
 
-import "./index.css";
-
 // import components and containers
 import Menu from './Menu/';
 
@@ -102,7 +100,7 @@ class App extends Component {
 	render() {
     return (
     	<Router>
-    		<div className="app">
+    		<div id="app">
 				<Menu />
 
 				<Switch>

@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 import ReactSVG from 'react-svg';
 import ReactTooltip from 'react-tooltip'
 
-import "./index.css";
+import classnames from 'classnames';
+import styles from "./index.module.sass";
 
 import TextEllipse from '../../components/TextEllipsis'
 
@@ -34,8 +35,8 @@ class Menu extends Component {
 	  	}
 
 		return (
-			<nav className="nav">
-				<div className="logo">
+			<nav className={styles.nav}>
+				<div className={styles.logo}>
 					<Link to="/"><img src={logo} alt=""/></Link>
 					<p>Ether Comics</p>
 				</div>
@@ -44,15 +45,15 @@ class Menu extends Component {
 					<Link to="/test">Marketplace</Link>
 				</div>
 				
-				<div className="account-container">
+				<div className={classnames(styles.accountContainer, {[styles.isOnline]: !network.external })}>
 					{networkStatus}
 					<ReactTooltip id="network" place="bottom" type="light" effect="solid">
 						{networkMsg}
 					</ReactTooltip>
 					
-					<div className="dropdown">
-						<a className="toggle"><strong>Account</strong></a>
-						<div className="content">
+					<div className={styles.dropdown}>
+						<a className={styles.dropdownToggle}><strong>Account</strong></a>
+						<div className={styles.dropdownContent}>
 							<TextEllipse text={account}/>
 							<Link to={accountLink}>My Heroes</Link>
 						</div>

@@ -23,6 +23,7 @@
     "eject": "react-app-rewired eject"
   },
   "devDependencies": {
+    "classnames": "^2.2.6",
     "node-sass": "^4.9.3",
     "react-app-rewire-css-modules": "github:codebandits/react-app-rewire-css-modules",
     "react-app-rewired": "^1.5.2",

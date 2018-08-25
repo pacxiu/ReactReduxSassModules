@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-import "./index.css"
+import styles from "./index.module.sass"
 
 export default class TextEllipse extends Component {
 	render() {
     const { text } = this.props
 
 		return (
-			<div>{text}</div>
+			<div className={styles.text}>{text}</div>
 		);
 	}
 }

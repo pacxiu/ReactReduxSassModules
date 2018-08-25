@@ -1,0 +1,12 @@
+.main-container {
+  min-height: calc(100vh - 6.6rem);
+  background: url('../../assets/main-bg.jpeg') center center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  color: white;
+  margin: 0;
+}

@@ -15,8 +15,9 @@ import Marketplace from './pages/Marketplace';
 import Footer from './components/Footer';
 
 // import actions
-import { setWeb3, setAccount, setContract } from './actions/web3';
-import { setNetwork } from './actions/network';
+import { setAddress } from './duck/user';
+import { setNetwork } from './duck/network';
+import { setWeb3, setContract } from './duck/web3';
 
 class App extends Component {
 	constructor() {
@@ -48,37 +49,40 @@ class App extends Component {
 		});
 	}
 
-	initNetworkData(web3) {
-		const eth = web3.eth;
+  initNetworkData(web3) {
+    const eth = web3.eth;
+    const { setNetwork, setContract, setWeb3 } = this.props
 
-		this.initAccountAddres()
+    this.initAccountAddres()
 
-		// get current network
-		eth.net.getId().then( (id) => {
-			let network = { ...this.props.network, current: id };
-			// network.current = currentNetwork;
+    // get current network
+    eth.net.getId().then( (id) => {
+      let network = { ...this.props.network, current: id };
+      // network.current = currentNetwork;
 
-			if ( (id !== network.expected) && (network.external === false) ) {
-				// const web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/Fi6gFcfwLWXX6YUOnke8"));
+      if ( (id !== network.expected) && (network.external === false) ) {
+        // const web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/Fi6gFcfwLWXX6YUOnke8"));
 
-				Promise.resolve(this.props.setWeb3(web3))
-				.then((response) => {
-					this.props.setNetwork({ ...network, external: true})
-					return response;
-				})
-				.then((response) => {
-					this.initNetworkData(response.payload.web3)
-				})
-				
-				return null;
-			}
+        Promise.resolve(setWeb3(web3))
+        .then((response) => {
+          setNetwork({ ...network, external: true})
+          return response;
+        })
+        .then((response) => {
+          this.initNetworkData(response.payload.web3)
+        })
+        
+        return null;
+      }
 
-			this.props.setNetwork({ ...network });
-			return null;
-		});
+      setNetwork({ ...network });
+      return null;
+    });
 
-		this.props.setContract(web3);
-	}
+    // const contract = new web3.eth.Contract(ABI, CONTRACT)
+    // const contract = new web3.eth.Contract(Contract.abi, Contract.networks["5777"].address);
+    setContract('Contract here');
+  }
 
 	initAccountAddres() {
 		const eth = this.props.web3.eth;
@@ -86,7 +90,7 @@ class App extends Component {
 		// setting user account if it is different than current account
 		eth.getAccounts().then( (account) => {
 			if ( account[0] !== this.props.account ) {
-				this.props.setAccount(account[0]);
+				this.props.setAddress(account[0]);
 			}		
 			return null;
 		});
@@ -117,7 +121,7 @@ class App extends Component {
 
 function mapStateToProps(state) {
 	return { 
-		web3: state.web3,
+		web3: state.web3.web3,
 		account: state.account,
 		contract: state.contract,
 		network: state.network
@@ -125,7 +129,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-	return bindActionCreators({ setWeb3, setAccount, setContract, setNetwork }, dispatch);
+  return bindActionCreators({ setWeb3, setAddress, setContract, setNetwork }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

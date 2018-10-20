@@ -14,15 +14,15 @@ import logo from '../../assets/logo.png';
 
 class Menu extends Component {
 	render() {
-		let { account, network } = this.props;
+		let { address, network } = this.props;
 		let accountLink, networkStatus, networkMsg;
 
 		// check user account
-		if ( account == null ) {
-			account = "No account";
+		if ( address == null ) {
+			address = "No account";
 			accountLink = "";
 		} else {
-			accountLink = account.toString();
+			accountLink = address.toString();
 		}
 
 		// check user network
@@ -54,7 +54,7 @@ class Menu extends Component {
 					<div className={styles.dropdown}>
 						<a className={styles.dropdownToggle}><strong>Account</strong></a>
 						<div className={styles.dropdownContent}>
-							<TextEllipse text={account}/>
+							<TextEllipse text={address}/>
 							<Link to={accountLink}>My Heroes</Link>
 						</div>
 					</div>
@@ -66,7 +66,7 @@ class Menu extends Component {
 
 function mapStateToProps(state) {
 	return { 
-		account: state.account,
+		address: state.user.address,
 		network: state.network
 	};
 }

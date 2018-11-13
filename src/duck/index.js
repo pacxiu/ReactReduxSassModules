@@ -8,7 +8,7 @@ const reducers = combineReducers({
   router,
   web3: web3Reducer,
   user: userReducer,
-  network: networkReducer
+  network: networkReducer,
 });
 
 export default reducers

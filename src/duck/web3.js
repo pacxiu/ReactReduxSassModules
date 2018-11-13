@@ -3,7 +3,7 @@ import { SET_WEB3, SET_CONTRACT } from './types';
 // setting initial state
 const initialState = {
   web3: null,
-  contract: null
+  contract: null,
 };
 
 // Reducer

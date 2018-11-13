@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { hot } from 'react-hot-loader'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -132,4 +133,4 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({ setWeb3, setAddress, setContract, setNetwork }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default hot(module)(connect(mapStateToProps, mapDispatchToProps)(App));

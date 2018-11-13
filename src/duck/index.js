@@ -11,4 +11,4 @@ const reducers = combineReducers({
   network: networkReducer,
 });
 
-export default reducers
+export default reducers;

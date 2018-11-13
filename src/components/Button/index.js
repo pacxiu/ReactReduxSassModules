@@ -1,14 +1,24 @@
-import React, { Component } from 'react';
-import { Link } from "react-router-dom";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import styles from './index.module.sass'
+import classnames from 'classnames';
+import styles from './index.module.sass';
 
-export default class Button extends Component {
-	render() {
-		const { link, text } = this.props
+const Button = ({ onClick, children, customClass }) => (
+  <div
+    role="button"
+    tabIndex="0"
+    className={classnames(styles.button, customClass)}
+    onClick={onClick}
+  >
+    {children}
+  </div>
+);
 
-		return (
-			<Link className={styles.button} to={`/${link}`} >{text}</Link>
-		);
-	}
-}
+Button.propTypes = {
+  onClick: PropTypes.func,
+  children: PropTypes.node,
+  customClass: PropTypes.string,
+};
+
+export default Button;

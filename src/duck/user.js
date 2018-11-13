@@ -2,7 +2,7 @@ import { SET_ADDRESS } from './types';
 
 // setting initial state
 const initialState = {
-  address: null
+  address: null,
 };
 
 // Reducer
@@ -11,17 +11,17 @@ export default (state = initialState, action = {}) => {
   const { address } = payload;
 
   switch (action.type) {
-    case SET_ADDRESS: 
-      return {...state, address};
+    case SET_ADDRESS:
+      return { ...state, address };
     default:
       return state;
   }
-}
+};
 
 // Action Creators
-export const setAddress = (address) => {  
-  return {
+export const setAddress = address => (
+  {
     type: SET_ADDRESS,
-    payload: { address }
+    payload: { address },
   }
-};
+);

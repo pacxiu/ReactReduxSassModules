@@ -1,13 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import styles from "./index.module.sass"
+import classnames from 'classnames';
+import styles from './index.module.sass';
 
-export default class TextEllipse extends Component {
-	render() {
-    const { text } = this.props
+const TextEllipsis = ({ text, customClass }) => (
+  <div className={classnames(styles.text, customClass)}>{text}</div>
+);
 
-		return (
-			<div className={styles.text}>{text}</div>
-		);
-	}
-}
+TextEllipsis.propTypes = {
+  text: PropTypes.string.isRequired,
+  customClass: PropTypes.string,
+};
+
+export default TextEllipsis;
